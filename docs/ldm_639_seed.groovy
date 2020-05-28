@@ -1,4 +1,3 @@
-
 def gitUrl = 'https://github.com/lsst/LDM-639'
 
 script = '''#!/bin/bash
@@ -12,6 +11,9 @@ git add jira_docugen.appendix.tex
 git add jira_imgs/
 git diff-index --quiet HEAD || git commit --author "Docsteady <noreply@lsst.org>" -m "Jenkins automatic update commit"
 '''
+
+folder('docs'){}
+folder('docs/DM'){}
 
 job('docs/DM/LDM-639-docugen') {
     label('master')
