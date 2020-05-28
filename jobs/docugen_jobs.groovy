@@ -12,11 +12,15 @@ git add jira_imgs/
 git diff-index --quiet HEAD || git commit --author "Docsteady <noreply@lsst.org>" -m "Jenkins automatic update commit"
 '''
 
-folder('docs'){}
-folder('docs/DM'){}
+folder('docs'){
+    description('All Docugen Jobs.')
+}
+folder('docs/DM'){
+    description('DM Docugen Jobs.')
+}
 
 job('docs/DM/LDM-639-docugen') {
-    label('master')
+    label('docugen')
     scm { git(gitUrl) }
     triggers { scm('H 4 * * 1-5') }
     steps { shell(script) }
