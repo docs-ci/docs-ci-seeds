@@ -8,7 +8,7 @@ source "${WORK_DIR}/.docugen"
 git diff
 git add *.tex 
 git add jira_imgs/
-if [ -d "attachments"]; then
+if [ -d "attachments" ]; then
   git add attachments
 fi
 git status
@@ -28,7 +28,7 @@ job('docs/DM/LDM-639-docugen') {
     scm { git(gitUrl) }
     triggers { scm('H 4 * * 1-5') }
     steps { 
-        shell('git checkout ' + branch)
+        shell('git checkout -B ' + branch)
         shell(script)
     }
 }
@@ -37,11 +37,11 @@ job('docs/DM/LDM-639-docugen') {
 job('docs/DM/DMTR-182-docugen') {
     label('docugen')
     def branch = "tickets/DM-17123"
-    def gitUrl = 'https://github.com/lssti-dm/DMTR-182'
+    def gitUrl = 'https://github.com/lsst-dm/DMTR-182'
     scm { git(gitUrl) }
     triggers { scm('H 4 * * 1-5') }
     steps {
-        shell('git checkout ' + branch)
+        shell('git checkout -B ' + branch)
         shell(script)
     }
 }
