@@ -1,18 +1,18 @@
 // Docugeneration jobs
 
 
-script = '''#!/bin/bash
-#git checkout jira-sync
-git pull
-
+script = '''git pull
 WORK_DIR=`pwd`
 source "${WORK_DIR}/.docugen"
 
 git diff
-git add jira_docugen.tex 
-git add jira_docugen.appendix.tex 
+git add *.tex 
 git add jira_imgs/
-git diff-index --quiet HEAD || git commit --author "Docsteady <noreply@lsst.org>" -m "Jenkins automatic update commit"
+if [ -d "attachments"]; then
+  git add attachments
+fi
+git status
+git diff-index --quiet HEAD || git commit --author "Docsteady <noreply@lsst.org>" -m "Jenkins automatic update from Jira"
 '''
 
 
@@ -28,6 +28,19 @@ job('docs/DM/LDM-639-docugen') {
     scm { git(gitUrl) }
     triggers { scm('H 4 * * 1-5') }
     steps { 
+        shell('git checkout ' + branch)
+        shell(script)
+    }
+}
+
+
+job('docs/DM/DMTR-182-docugen') {
+    label('docugen')
+    def branch = "tickets/DM-17123"
+    def gitUrl = 'https://github.com/lssti-dm/DMTR-182'
+    scm { git(gitUrl) }
+    triggers { scm('H 4 * * 1-5') }
+    steps {
         shell('git checkout ' + branch)
         shell(script)
     }
