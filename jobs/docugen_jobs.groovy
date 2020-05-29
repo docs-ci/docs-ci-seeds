@@ -1,8 +1,7 @@
 // Docugeneration jobs
 
 
-script = '''git pull
-WORK_DIR=`pwd`
+script = '''WORK_DIR=`pwd`
 source "${WORK_DIR}/.docugen"
 
 git diff
@@ -15,20 +14,51 @@ git status
 git diff-index --quiet HEAD || git commit --author "Docsteady <noreply@lsst.org>" -m "Jenkins automatic update from Jira"
 '''
 
-
+///   folder
 folder('docs'){ description('All Docugen Jobs.') }
 folder('docs/DM'){ description('DM Docugen Jobs.') }
 folder('docs/SitCom'){ description('SitCom Docugen Jobs.') }
 
 
+/// DM documents autogener
+job('docs/DM/LDM-540-docugen') {
+    label('docugen')
+    def gitBranch = 'jira-sync'
+    def gitUrl = 'https://github.com/lsst/LDM-540'
+    scm { git(gitUrl) }
+    triggers { scm('H 4 * * 1-5') }
+    steps {
+        // https://stackoverflow.com/questions/11511390/jenkins-git-plugin-detached-head
+        shell('git checkout -B ' + gitBranch)
+        shell('git pull origin ' + gitBranch)
+        shell(script)
+    }
+}
+
+
+job('docs/DM/LDM-552-docugen') {
+    label('docugen')
+    def gitBranch = "jira-sync"
+    def gitUrl = 'https://github.com/lsst/LDM-552'
+    scm { git(gitUrl) }
+    triggers { scm('H 4 * * 1-5') }
+    steps {
+        shell('git checkout -B ' + gitBranch)
+        shell('git pull origin ' + gitBranch)
+        shell(script)
+    }
+}
+
+
 job('docs/DM/LDM-639-docugen') {
     label('docugen')
-    def branch = "jira-sync"
+    def gitBranch = "jira-sync"
     def gitUrl = 'https://github.com/lsst/LDM-639'
     scm { git(gitUrl) }
     triggers { scm('H 4 * * 1-5') }
     steps { 
-        shell('git checkout -B ' + branch)
+        shell('git checkout -B ' + gitBranch)
+        shell('git pull origin ' + gitBranch)
         shell(script)
     }
 }
@@ -36,12 +66,13 @@ job('docs/DM/LDM-639-docugen') {
 
 job('docs/DM/DMTR-182-docugen') {
     label('docugen')
-    def branch = "tickets/DM-17123"
+    def gitBranch = "tickets/DM-17123"
     def gitUrl = 'https://github.com/lsst-dm/DMTR-182'
     scm { git(gitUrl) }
     triggers { scm('H 4 * * 1-5') }
     steps {
-        shell('git checkout -B ' + branch)
+        shell('git checkout -B ' + gitBranch)
+        shell('git pull origin ' + gitBranch)
         shell(script)
     }
 }
