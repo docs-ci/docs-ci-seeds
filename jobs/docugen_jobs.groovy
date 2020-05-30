@@ -36,7 +36,7 @@ job('docs/DM/LDM-540-docugen') {
     publishers {
         git {
             pushOnlyIfSuccess()
-            branch('orogin', gitBranch)
+            branch('origin', gitBranch)
         }
     }
 }
@@ -53,6 +53,12 @@ job('docs/DM/LDM-552-docugen') {
         shell('git pull origin ' + gitBranch)
         shell(script)
     }
+    publishers {
+        git {
+            pushOnlyIfSuccess()
+            branch('origin', gitBranch)
+        }
+    }
 }
 
 
@@ -67,6 +73,12 @@ job('docs/DM/LDM-639-docugen') {
         shell('git pull origin ' + gitBranch)
         shell(script)
     }
+    publishers {
+        git {
+            pushOnlyIfSuccess()
+            branch('origin', gitBranch)
+        }
+    }
 }
 
 
@@ -80,5 +92,11 @@ job('docs/DM/DMTR-182-docugen') {
         shell('git checkout -B ' + gitBranch)
         shell('git pull origin ' + gitBranch)
         shell(script)
+    }
+    publishers {
+        git {
+            pushOnlyIfSuccess()
+            branch('origin', gitBranch)
+        }
     }
 }
