@@ -33,6 +33,12 @@ job('docs/DM/LDM-540-docugen') {
         shell('git pull origin ' + gitBranch)
         shell(script)
     }
+    publishers {
+        git {
+            pushOnlyIfSuccess()
+            branch('orogin', gitBranch)
+        }
+    }
 }
 
 
