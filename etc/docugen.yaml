@@ -1,0 +1,9 @@
+# list of document to autogenerate
+LSE-419:
+  gitUrl: https://github.com/lsst/LSE-419
+  gitBranch: jira-sync
+  folder: SitCom
+SCTR-14:
+  gitUrl: https://github.com/lsst-sitcom/SCTR-14
+  gitBranch: tickets/SE-1324
+  folder: SitCom
