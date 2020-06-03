@@ -32,7 +32,6 @@ job('docs/DM/LDM-540-docugen') {
     def gitBranch = 'jira-sync'
     def gitUrl = 'https://github.com/lsst/LDM-540'
     scm { git(gitUrl,'master',{node -> node / 'extensions' << '' } ) }
-    }
     triggers { scm('H 4 * * 1-5') }
     steps {
         // https://stackoverflow.com/questions/11511390/jenkins-git-plugin-detached-head
