@@ -25,8 +25,10 @@ folder('docs/SitCom'){ description('SitCom Docugen Jobs.') }
 
 
 ///  loop creation
-for (doc in docs_list) {
+//for (doc in docs_list) {
+docs_list.each { doc, values ->
     println "${doc}"
+    println "      ${values}"
 }
 
 /// DM documents autogener
