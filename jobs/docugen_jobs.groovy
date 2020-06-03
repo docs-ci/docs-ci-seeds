@@ -25,9 +25,9 @@ folder('docs/SitCom'){ description('SitCom Docugen Jobs.') }
 
 
 ///  loop creation
-// docs_list.collect { -> doc
-//    println "${doc}"
-//}
+for (doc in docs_list) {
+    println "${doc}"
+}
 
 /// DM documents autogener
 job('docs/DM/LDM-540-docugen') {
