@@ -3,7 +3,7 @@
 import org.yaml.snakeyaml.Yaml
 // https://stackoverflow.com/questions/47443106/jenkins-dsl-parse-yaml-for-complex-processing
 def workDir = SEED_JOB.getWorkspace()
-List docs_list = new Yaml().load(("${workDir}/etc/docugen.yaml" as File).text)
+def docs_list = new Yaml().load(("${workDir}/etc/docugen.yaml" as File).text)
 
 script = '''WORK_DIR=`pwd`
 source "${WORK_DIR}/.docugen"
