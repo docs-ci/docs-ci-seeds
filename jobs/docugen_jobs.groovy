@@ -34,7 +34,7 @@ job('docs/DM/LDM-540-docugen') {
     scm { 
         git{
             remote { url(gitUrl) }
-            extensions { }
+            extensions { perBuildTag(false) }
         }
     }
     triggers { scm('H 4 * * 1-5') }
