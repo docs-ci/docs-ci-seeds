@@ -1,7 +1,7 @@
 // Docugeneration jobs
 @Grab(group='org.yaml', module='snakeyaml', version='1.5')
 import org.yaml.snakeyaml.Yaml
-def docs_list = new Yaml().load(("etc/docugen.yaml" as File).text)
+def docs_list = new Yaml().load(("${workDir}/etc/docugen.yaml" as File).text)
 
 script = '''WORK_DIR=`pwd`
 source "${WORK_DIR}/.docugen"
