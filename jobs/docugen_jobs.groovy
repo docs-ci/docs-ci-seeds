@@ -1,6 +1,6 @@
 // Docugeneration jobs
-//import org.yaml.snakeyaml.Yaml
-//def docs_list = new Yaml().load(readFileFromWorkSpace('etc/docugen.yaml'))
+import org.yaml.snakeyaml.Yaml
+def docs_list = new Yaml().load(readFileFromWorkSpace('etc/docugen.yaml'))
 
 script = '''WORK_DIR=`pwd`
 source "${WORK_DIR}/.docugen"
