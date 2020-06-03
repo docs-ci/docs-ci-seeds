@@ -38,7 +38,7 @@ docs_list.each { doc, values ->
     def gitBranch = values.gitBranch
     def checkout_script = 'git checkout -B ' + gitBranch + '\n'
     checkout_script = checkout_script + 'git pull origin ' + gitBranch
-    job("docs/${values.folder}/${doc}") {
+    job("docs/${values.folder}/${doc}-docugen") {
         scm {
             git {
                 remote {
