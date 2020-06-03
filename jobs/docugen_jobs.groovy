@@ -20,10 +20,10 @@ git status
 git diff-index --quiet HEAD || git commit --author "Docsteady <noreply@lsst.org>" -m "Jenkins automatic update from Jira"
 '''
 
-///   folder
+/// Creating docs  folder
 folder('docs'){ description('All Docugen Jobs.') }
-folder('docs/DM'){ description('DM Docugen Jobs.') }
-folder('docs/SitCom'){ description('SitCom Docugen Jobs.') }
+//folder('docs/DM'){ description('DM Docugen Jobs.') }
+//folder('docs/SitCom'){ description('SitCom Docugen Jobs.') }
 
 
 ///  loop creation
@@ -60,90 +60,6 @@ docs_list.each { doc, values ->
                 pushOnlyIfSuccess()
                 branch('origin', gitBranch)
             }
-        }
-    }
-}
-
-/// DM documents autogener
-job('docs/DM/LDM-552-docugen') {
-    label('docugen')
-    def gitBranch = "jira-sync"
-    def gitUrl = 'https://github.com/lsst/LDM-552'
-    triggers { scm('H 4 * * 1-5') }
-    scm {
-        git {
-            remote {
-                url(gitUrl)
-                credentials(git_credentials)
-            }
-            extensions { }
-        }
-    }
-    steps {
-        shell('git checkout -B ' + gitBranch)
-        shell('git pull origin ' + gitBranch)
-        shell(script)
-    }
-    publishers {
-        git {
-            pushOnlyIfSuccess()
-            branch('origin', gitBranch)
-        }
-    }
-}
-
-
-job('docs/DM/LDM-639-docugen') {
-    label('docugen')
-    def gitBranch = "jira-sync"
-    def gitUrl = 'https://github.com/lsst/LDM-639'
-    scm { 
-        git {
-            remote { 
-                url(gitUrl)
-                credentials(git_credentials)
-            }
-            extensions { }  
-        }
-    }
-    triggers { scm('H 4 * * 1-5') }
-    steps { 
-        shell('git checkout -B ' + gitBranch)
-        shell('git pull origin ' + gitBranch)
-        shell(script)
-    }
-    publishers {
-        git {
-            pushOnlyIfSuccess()
-            branch('origin', gitBranch)
-        }
-    }
-}
-
-
-job('docs/DM/DMTR-182-docugen') {
-    label('docugen')
-    def gitBranch = "tickets/DM-17123"
-    def gitUrl = 'https://github.com/lsst-dm/DMTR-182'
-    scm {
-        git {
-            remote {
-                url(gitUrl)
-                credentials(git_credentials)
-            }
-            extensions { }
-        }
-    }
-    triggers { scm('H 4 * * 1-5') }
-    steps {
-        shell('git checkout -B ' + gitBranch)
-        shell('git pull origin ' + gitBranch)
-        shell(script)
-    }
-    publishers {
-        git {
-            pushOnlyIfSuccess()
-            branch('origin', gitBranch)
         }
     }
 }
