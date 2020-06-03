@@ -65,35 +65,6 @@ docs_list.each { doc, values ->
 }
 
 /// DM documents autogener
-job('docs/DM/LDM-540-docugen') {
-    label('docugen')
-    def gitBranch = 'jira-sync'
-    def gitUrl = 'https://github.com/lsst/LDM-540'
-    scm {
-        git {
-            remote {
-                url(gitUrl)
-                credentials(git_credentials)
-            }
-            extensions { }
-        }
-    }
-    triggers { scm('H 4 * * 1-5') }
-    steps {
-        // https://stackoverflow.com/questions/11511390/jenkins-git-plugin-detached-head
-        shell('git checkout -B ' + gitBranch)
-        shell('git pull origin ' + gitBranch)
-        shell(script)
-    }
-    publishers {
-        git {
-            pushOnlyIfSuccess()
-            branch('origin', gitBranch)
-        }
-    }
-}
-
-
 job('docs/DM/LDM-552-docugen') {
     label('docugen')
     def gitBranch = "jira-sync"

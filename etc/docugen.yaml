@@ -1,4 +1,8 @@
 # list of document to autogenerate
+LDM-540:
+  gitUrl: https://github.com/lsst/LDM-540
+  gitBranch: jira-sync
+  folder: DM
 LSE-419:
   gitUrl: https://github.com/lsst/LSE-419
   gitBranch: jira-sync
