@@ -72,7 +72,7 @@ job('docs/DM/LDM-639-docugen') {
     label('docugen')
     def gitBranch = "jira-sync"
     def gitUrl = 'https://github.com/lsst/LDM-639'
-    scm { git(gitUrl) }
+    scm { git(gitUrl,'master',{node -> node / 'extensions' << '' } ) }
     triggers { scm('H 4 * * 1-5') }
     steps { 
         shell('git checkout -B ' + gitBranch)
