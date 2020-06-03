@@ -52,7 +52,7 @@ job('docs/DM/LDM-552-docugen') {
     label('docugen')
     def gitBranch = "jira-sync"
     def gitUrl = 'https://github.com/lsst/LDM-552'
-    scm { git(gitUrl) }
+    scm { git(gitUrl,'master',{node -> node / 'extensions' << '' } ) }
     triggers { scm('H 4 * * 1-5') }
     steps {
         shell('git checkout -B ' + gitBranch)
@@ -72,7 +72,15 @@ job('docs/DM/LDM-639-docugen') {
     label('docugen')
     def gitBranch = "jira-sync"
     def gitUrl = 'https://github.com/lsst/LDM-639'
-    scm { git(gitUrl,'master',{node -> node / 'extensions' << '' } ) }
+    scm { 
+        git {
+            remote { 
+                url(gitUrl)
+                credentials('c81223b1-4e27-466f-9e8d-83ea7eea6b2f')
+            }
+            extensions { }  
+        }
+    }
     triggers { scm('H 4 * * 1-5') }
     steps { 
         shell('git checkout -B ' + gitBranch)
@@ -92,7 +100,7 @@ job('docs/DM/DMTR-182-docugen') {
     label('docugen')
     def gitBranch = "tickets/DM-17123"
     def gitUrl = 'https://github.com/lsst-dm/DMTR-182'
-    scm { git(gitUrl) }
+    scm { git(gitUrl,'master',{node -> node / 'extensions' << '' } ) }
     triggers { scm('H 4 * * 1-5') }
     steps {
         shell('git checkout -B ' + gitBranch)
