@@ -1,7 +1,6 @@
 // Docugeneration jobs
-import org.yaml.snakeyaml.Yaml
-
-def docs_list = new Yaml().load(readFileFromWorkSpace('etc/docugen.yaml'))
+//import org.yaml.snakeyaml.Yaml
+//def docs_list = new Yaml().load(readFileFromWorkSpace('etc/docugen.yaml'))
 
 script = '''WORK_DIR=`pwd`
 source "${WORK_DIR}/.docugen"
@@ -23,9 +22,9 @@ folder('docs/SitCom'){ description('SitCom Docugen Jobs.') }
 
 
 ///  loop creation
-docs_list.collect { -> doc
-    println "${doc}"
-}
+// docs_list.collect { -> doc
+//    println "${doc}"
+//}
 
 /// DM documents autogener
 job('docs/DM/LDM-540-docugen') {
