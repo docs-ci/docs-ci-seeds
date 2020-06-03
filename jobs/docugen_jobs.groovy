@@ -5,6 +5,8 @@ import org.yaml.snakeyaml.Yaml
 def workDir = SEED_JOB.getWorkspace()
 def docs_list = new Yaml().load(("${workDir}/etc/docugen.yaml" as File).text)
 
+def git_credentials = "c81223b1-4e27-466f-9e8d-83ea7eea6b2f"
+
 script = '''WORK_DIR=`pwd`
 source "${WORK_DIR}/.docugen"
 
@@ -25,10 +27,40 @@ folder('docs/SitCom'){ description('SitCom Docugen Jobs.') }
 
 
 ///  loop creation
-//for (doc in docs_list) {
+def docs_folders = []
 docs_list.each { doc, values ->
-    println "${doc}"
-    println "      ${values}"
+    println "Defininf job for ${doc}"
+    if (!(values.folder in docs_folders)) {
+        docs_folders.add("${values.folder}")
+        folder("docs/${values.folder}"){}
+    }
+    def gitUrl = values.gitUrl
+    def gitBranch = values.gitBranch
+    def checkout_script = 'git checkout -B ' + gitBranch + '\n'
+    checkout_script = checkout_script + 'git pull origin ' + gitBranch
+    job("docs/${values.folder}/${doc}") {
+        scm {
+            git {
+                remote {
+                    url(gitUrl)
+                    credentials(git_credentials)
+                }
+                extensions { }
+            }
+        }
+        triggers { scm('H 4 * * *') }
+        steps {
+            // https://stackoverflow.com/questions/11511390/jenkins-git-plugin-detached-head
+            shell(checkout_script)
+            shell(script)
+        }
+        publishers {
+            git {
+                pushOnlyIfSuccess()
+                branch('origin', gitBranch)
+            }
+        }
+    }
 }
 
 /// DM documents autogener
@@ -40,7 +72,7 @@ job('docs/DM/LDM-540-docugen') {
         git {
             remote {
                 url(gitUrl)
-                credentials('c81223b1-4e27-466f-9e8d-83ea7eea6b2f')
+                credentials(git_credentials)
             }
             extensions { }
         }
@@ -70,7 +102,7 @@ job('docs/DM/LDM-552-docugen') {
         git {
             remote {
                 url(gitUrl)
-                credentials('c81223b1-4e27-466f-9e8d-83ea7eea6b2f')
+                credentials(git_credentials)
             }
             extensions { }
         }
@@ -97,7 +129,7 @@ job('docs/DM/LDM-639-docugen') {
         git {
             remote { 
                 url(gitUrl)
-                credentials('c81223b1-4e27-466f-9e8d-83ea7eea6b2f')
+                credentials(git_credentials)
             }
             extensions { }  
         }
@@ -125,7 +157,7 @@ job('docs/DM/DMTR-182-docugen') {
         git {
             remote {
                 url(gitUrl)
-                credentials('c81223b1-4e27-466f-9e8d-83ea7eea6b2f')
+                credentials(git_credentials)
             }
             extensions { }
         }
