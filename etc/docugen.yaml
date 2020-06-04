@@ -19,6 +19,22 @@ LSE-419:
   gitUrl: https://github.com/lsst/LSE-419
   gitBranch: jira-sync
   folder: SitCom
+LSE-429:
+  gitUrl: https://github.com/lsst/LSE-429
+  gitBranch: tickets/DM-20305
+  folder: SitCom
+SCTR-21:
+  gitUrl: https://github.com/lsst-sitcom/SCTR-21
+  gitBranch: tickets/SE-1372
+  folder: SitCom
+SCTR-22:
+  gitUrl: https://github.com/lsst-sitcom/SCTR-22
+  gitBranch: tickets/SE-1373
+  folder: SitCom
+SCTR-31:
+  gitUrl: https://github.com/lsst-sitcom/SCTR-31
+  gitBranch: tickets/SE-1374
+  folder: SitCom
 SCTR-14:
   gitUrl: https://github.com/lsst-sitcom/SCTR-14
   gitBranch: tickets/SE-1324

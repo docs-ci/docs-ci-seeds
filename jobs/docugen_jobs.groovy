@@ -29,7 +29,7 @@ folder('docs'){ description('All Docugen Jobs.') }
 ///  loop creation
 def docs_folders = []
 docs_list.each { doc, values ->
-    println "Defininf job for ${doc}"
+    println "Defining job for ${doc}"
     if (!(values.folder in docs_folders)) {
         docs_folders.add("${values.folder}")
         folder("docs/${values.folder}"){}
