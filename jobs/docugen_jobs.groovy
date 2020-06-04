@@ -49,7 +49,7 @@ docs_list.each { doc, values ->
                 extensions { }
             }
         }
-        triggers { scm('H 4 * * *') }
+        triggers { cron('H 4 * * *') }
         steps {
             // https://stackoverflow.com/questions/11511390/jenkins-git-plugin-detached-head
             shell(checkout_script)
