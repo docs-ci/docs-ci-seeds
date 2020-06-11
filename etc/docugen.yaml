@@ -11,6 +11,10 @@ LDM-639:
   gitUrl: https://github.com/lsst/LDM-639
   gitBranch: jira-sync
   folder: DM
+LDM-692:
+  gitUrl: https://github.com/lsst/LDM-692
+  gitBranch: jira-sync
+  folder: DM
 DMTR-182:
   gitUrl: https://github.com/lsst-dm/DMTR-182
   gitBranch: tickets/DM-17123
