@@ -19,6 +19,10 @@ DMTR-182:
   gitUrl: https://github.com/lsst-dm/DMTR-182
   gitBranch: tickets/DM-17123
   folder: DM
+DMTR-241:
+  gitUrl: https://github.com/lsst-dm/DMTR-241
+  gitBranch: tickets/DM-25235
+  folder: DM
 LSE-419:
   gitUrl: https://github.com/lsst/LSE-419
   gitBranch: jira-sync
@@ -26,6 +30,10 @@ LSE-419:
 LSE-429:
   gitUrl: https://github.com/lsst/LSE-429
   gitBranch: tickets/DM-20305
+  folder: SitCom
+SCTR-12:
+  gitUrl: https://github.com/lsst-sitcom/SCTR-12
+  gitBranch: tickets/SE-1322
   folder: SitCom
 SCTR-21:
   gitUrl: https://github.com/lsst-sitcom/SCTR-21
