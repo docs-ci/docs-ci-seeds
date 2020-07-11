@@ -46,7 +46,7 @@ docs_list.each { doc, values ->
                     url(gitUrl)
                     credentials(git_credentials)
                 }
-                extensions { }
+                extensions { cleanBeforeCheckout() }
             }
         }
         triggers { cron('H 4 * * *') }

@@ -3,10 +3,6 @@ LDM-540:
   gitUrl: https://github.com/lsst/LDM-540
   gitBranch: jira-sync
   folder: DM
-LDM-552:
-  gitUrl: https://github.com/lsst/LDM-552
-  gitBranch: jira-sync
-  folder: DM
 LDM-639:
   gitUrl: https://github.com/lsst/LDM-639
   gitBranch: jira-sync
