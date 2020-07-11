@@ -37,7 +37,8 @@ docs_list.each { doc, values ->
     def gitUrl = values.gitUrl
     def gitBranch = values.gitBranch
     def checkout_script = 'git checkout -B ' + gitBranch + '\n'
-    checkout_script = checkout_script + 'git pull origin ' + gitBranch
+    checkout_script = checkout_script + 'git branch --set-upstream-to=origin/' + gitBranch + ' ' + gitBranch + '\n'
+    checkout_script = checkout_script + 'git pull'
     job("docs/${values.folder}/${doc}-docugen") {
         label('docugen')
         scm {
