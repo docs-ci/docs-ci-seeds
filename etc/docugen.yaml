@@ -43,7 +43,7 @@ DMTR-241:
   gitUrl: https://github.com/lsst-dm/DMTR-241
   gitBranch: tickets/DM-25235
   folder: DM
-DTR-261:
+DMTR-261:
   gitUrl: https://github.com/lsst-dm/DMTR-261
   gitBranch: tickets/DM-25646
   folder: DM
