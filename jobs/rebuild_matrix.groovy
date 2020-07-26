@@ -3,7 +3,6 @@ import javaposse.jobdsl.dsl.Job
 
 def pipe_foler = "Pipelines"
 
-Job pipeline() {
   folder("$pipe_folder"){}
 
   dsl.pipelineJob("$pipe_folder/rebuild_matrix") {
@@ -31,4 +30,3 @@ Job pipeline() {
       }
     }
   }
-}
