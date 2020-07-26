@@ -12,7 +12,7 @@ import javaposse.jobdsl.dsl.Job
         scm {
           git { remote { url(repo) } }
         }
-        "pipelines/rebuild-matrix.groovy"
+        scriptPath("pipelines/rebuild-matrix.groovy")
       }
     }
   }
