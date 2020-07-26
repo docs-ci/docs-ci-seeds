@@ -1,10 +1,6 @@
 import javaposse.jobdsl.dsl.DslFactory
 import javaposse.jobdsl.dsl.Job
 
-def pipe_foler = "Pipelines"
-
-  folder("$pipe_folder"){}
-
   pipelineJob("rebuild_matrix") {
     keepDependencies()
     concurrentBuild(false)
