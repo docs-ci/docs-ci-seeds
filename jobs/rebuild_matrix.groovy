@@ -5,7 +5,7 @@ def pipe_foler = "Pipelines"
 
   folder("$pipe_folder"){}
 
-  dsl.pipelineJob("$pipe_folder/rebuild_matrix") {
+  pipelineJob("rebuild_matrix") {
     keepDependencies()
     concurrentBuild(false)
 
@@ -20,7 +20,7 @@ def pipe_foler = "Pipelines"
             branch(ref)
             extensions {
               pathRestriction {
-                includedRegions(script())
+                includedRegions("pipelines/rebuild-matrix.groovy")
                 excludedRegions(null)
               }
             }
