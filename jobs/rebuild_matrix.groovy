@@ -10,16 +10,7 @@ import javaposse.jobdsl.dsl.Job
     definition {
       cpsScm {
         scm {
-          git {
-            remote { url(repo) }
-            branch(ref)
-            extensions {
-              pathRestriction {
-                includedRegions("pipelines/rebuild-matrix.groovy")
-                excludedRegions(null)
-              }
-            }
-          }
+          git { remote { url(repo) } }
         }
         "pipelines/rebuild-matrix.groovy"
       }
