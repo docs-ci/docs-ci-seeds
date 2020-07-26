@@ -3,10 +3,9 @@ import javaposse.jobdsl.dsl.Job
 
   pipelineJob("rebuild_matrix") {
     keepDependencies()
-    concurrentBuild(false)
 
-    def repo = dsl.SEED_JOB.scm.userRemoteConfigs.get(0).getUrl()
-    def ref  = dsl.SEED_JOB.scm.getBranches().get(0).getName()
+    def repo = SEED_JOB.scm.userRemoteConfigs.get(0).getUrl()
+    def ref  = SEED_JOB.scm.getBranches().get(0).getName()
 
     definition {
       cpsScm {
