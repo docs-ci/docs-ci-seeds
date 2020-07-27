@@ -5,14 +5,11 @@ pipeline {
     }
   }
 
-  def pipe_foler = "Pipelines"
-
-  def arch_list = ["cos7", "cos8"]
-
-  def matrix = [:]
-
   stages {
     stage('build') {
+      def arch_list = ["cos7", "cos8"]
+      def matrix = [:]
+
       arch_list.each { arch ->
         matrix[arch] = build(
           job: "SciPipe/rebuild_" + arch,
@@ -20,6 +17,7 @@ pipeline {
           wait: true,
         )
       }
+
     }
   }
 }
