@@ -3,8 +3,7 @@ def arch_list = ["centos7", "centos8"]
 
 def jobs_dir = "Rebuilds"
 
-
-folder(job_dir){ description('Rebuild Jobs.') }
+folder(jobs_dir){ description('Rebuild Jobs.') }
 
 arch_list.each { arch ->
   job("${jobs_dir}/${values.folder}/rebuild-${arch}") {
