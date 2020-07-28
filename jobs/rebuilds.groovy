@@ -6,7 +6,7 @@ def jobs_dir = "Rebuilds"
 folder(jobs_dir){ description('Rebuild Jobs.') }
 
 arch_list.each { arch ->
-  job("${jobs_dir}/${values.folder}/rebuild-${arch}") {
+  job("${jobs_dir}/rebuild-${arch}") {
     label(arch)
     script = '#!/bin/bash' +
              'set +x\n' +
