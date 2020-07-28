@@ -4,14 +4,14 @@ import javaposse.jobdsl.dsl.Job
 folder('Pipelines'){ description('All Pipelines Jobs.') }
 
 pipelineJob("Pipelines/rebuild_matrix") {
-  //properties([pipelineTriggers([cron('H 4 * * *')])])
-  def triggers = []
-  triggers << cron('H 4 * * *')
-  properties (
-    [
-      pipelineTriggers(triggers)
-    ]
-  )
+  properties([pipelineTriggers([cron('@daily')])])
+  //def triggers = []
+  //triggers << cron('H 4 * * *')
+  //properties (
+  //  [
+  //    pipelineTriggers(triggers)
+  //  ]
+  //)
 
   def repo = SEED_JOB.scm.userRemoteConfigs.get(0).getUrl()
   def ref  = SEED_JOB.scm.getBranches().get(0).getName()
