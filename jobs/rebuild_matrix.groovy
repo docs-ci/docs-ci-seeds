@@ -6,7 +6,7 @@ folder('Pipelines'){ description('All Pipelines Jobs.') }
 pipelineJob("Pipelines/rebuild_matrix") {
   properties(
     [
-      pipelineTriggers([cron("H 4 0 0 0")]),
+      pipelineTriggers([cron "H 4 0 0 0" ]),
     ]
   )
 
