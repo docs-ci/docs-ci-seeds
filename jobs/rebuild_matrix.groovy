@@ -4,7 +4,7 @@ import javaposse.jobdsl.dsl.Job
 folder('Pipelines'){ description('All Pipelines Jobs.') }
 
 pipelineJob("Pipelines/rebuild_matrix") {
-  properties([pipelineTriggers([cron('@daily')])])
+  properties([pipelineTriggers([triggers([cron('H 4 * * *')])])])
   //def triggers = []
   //triggers << cron('H 4 * * *')
   //properties (
