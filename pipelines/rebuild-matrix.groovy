@@ -8,7 +8,7 @@ arch_list.each { arch ->
   matrix[arch] = {
     stage('build' + arch) {
       build(
-        job: "${rebuild_jobs_folder}/rebuild_${arch}",
+        job: "${rebuild_jobs_folder}/rebuild-${arch}",
         parameters: [],
         wait: true,
       )
