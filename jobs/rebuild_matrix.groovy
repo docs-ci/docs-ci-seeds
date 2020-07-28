@@ -1,18 +1,20 @@
 import javaposse.jobdsl.dsl.DslFactory
 import javaposse.jobdsl.dsl.Job
 
-  pipelineJob("rebuild_matrix") {
-    keepDependencies()
+folder('Pipelines'){ description('All Pipelines Jobs.') }
 
-    def repo = SEED_JOB.scm.userRemoteConfigs.get(0).getUrl()
-    def ref  = SEED_JOB.scm.getBranches().get(0).getName()
+pipelineJob("Pipelines/rebuild_matrix") {
+  keepDependencies()
 
-    definition {
-      cpsScm {
-        scm {
-          git { remote { url(repo) } }
-        }
-        scriptPath("pipelines/rebuild-matrix.groovy")
+  def repo = SEED_JOB.scm.userRemoteConfigs.get(0).getUrl()
+  def ref  = SEED_JOB.scm.getBranches().get(0).getName()
+
+  definition {
+    cpsScm {
+      scm {
+        git { remote { url(repo) } }
       }
+      scriptPath("pipelines/rebuild-matrix.groovy")
     }
   }
+}

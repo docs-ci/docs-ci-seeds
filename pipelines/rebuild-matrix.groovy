@@ -8,7 +8,7 @@ node { label "master" }
         matrix[arch] = build(
           job: "SciPipe/rebuild_" + arch,
           parameters: [],
-          wait: true,
+          wait: false,
         )
       }
 
