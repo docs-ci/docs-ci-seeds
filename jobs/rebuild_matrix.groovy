@@ -4,10 +4,11 @@ import javaposse.jobdsl.dsl.Job
 folder('Pipelines'){ description('All Pipelines Jobs.') }
 
 pipelineJob("Pipelines/rebuild_matrix") {
+  def String triggering = "H 4 0 0 0"
   properties{
       pipelineTriggers{
         triggers {
-          cron(String "H 4 0 0 0")
+          cron(triggering)
         }
       }
   }
