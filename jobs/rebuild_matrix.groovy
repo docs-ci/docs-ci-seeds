@@ -7,7 +7,7 @@ pipelineJob("Pipelines/rebuild_matrix") {
   properties{
       pipelineTriggers{
         triggers {
-          cron(["H 4 0 0 0"])
+          cron(String "H 4 0 0 0")
         }
       }
   }
