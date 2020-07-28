@@ -1,6 +1,6 @@
 node { label "master" }
 
-def arch_list = ["cos7", "cos8"]
+def arch_list = ["centos7", "centos8"]
 def matrix = [:]
 
 arch_list.each { arch ->
