@@ -5,10 +5,6 @@ import org.yaml.snakeyaml.Yaml
 def workDir = SEED_JOB.getWorkspace()
 def docs_list = new Yaml().load(("${workDir}/etc/docugen.yaml" as File).text)
 
-// --  println "Jira User: " + System.getenv("HOSTNAME")
-
-//def git_credentials = "c81223b1-4e27-466f-9e8d-83ea7eea6b2f"
-
 def git_credentials = System.getenv("GIT_CRED")
 
 script = '''WORK_DIR=`pwd`
