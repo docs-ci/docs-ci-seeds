@@ -16,25 +16,33 @@ arch_list.each { arch ->
       stringParam('SPLENV_REF', null, 'Conda env ref. If not specified it will use the default from lsstsw.')
     }
 
-    script = '#!/bin/bash\n' +
-             'set +x\n\n' +
-             'REFS=$1\n' +
-             'PRODUCTS=$2\n' +
-             'SPLENV_REF=$3\n\n' +
-             'envref=""\n' +
-             'if [[ "${SPLENV_REF}" ]]; then\n' +
-             '  envref="-r ${SPLENV_REF}"\n' +
-             'fi\n' +
-             'source $JENKINS_HOME/' + arch + '/lsstsw/bin/envconfig $envref\n\n' +
-             'buildrefs=""\n' +
-             'if [[ "${REFS}" ]]; then\n' +
-             '  for r in ${REFS[*]}; do\n' +
-             '    buildrefs+=("-r $r")\n' +
-             '  done\n' +
-             'fi\n' +
-             'rebuild $buildrefs lsst_distrib'
+    script = ''' #!/bin/bash
+set +x
+
+envref=""
+if [[ "${SPLENV_REF}" ]]; then
+  envref="-r ${SPLENV_REF}"
+fi
+echo "Sourcing environment:"
+echo "   source $HOME/lsstsw/bin/envconfig $envref"
+source $HOME//lsstsw/bin/envconfig $envref
+
+buildrefs=""
+for r in ${REFS[*]}; do
+  buildrefs+="-r $r"
+done
+if [[ "${PRODUCTS}" ]]; then
+  products=$PRODUCTS
+else
+  products="lsst_distrib"
+fi
+echo "Executing rebuild:" 
+echo "       rebuild $buildrefs $products"
+rebuild $buildrefs $products'''
+
     steps {
       shell(script)
     }
   }
 }
+
