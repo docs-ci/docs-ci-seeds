@@ -10,9 +10,15 @@ def buildParams = [
   string(name: 'SPLENV_REF', value: SPLENV_REF),
 ]
 
+println buildParams
+println REFS
+println PRODUCTS
+println SPLENV_REF
+
 arch_list.each { arch ->
   matrix[arch] = {
     stage('build' + arch) {
+      println arch + "  -------------"
       build(
         job: "${rebuild_jobs_folder}/rebuild-${arch}",
         parameters: buildParams,
