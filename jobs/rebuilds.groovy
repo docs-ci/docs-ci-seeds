@@ -22,7 +22,7 @@ set +x
 #------------------------------
 envref="-p"
 if [[ "$SPLENV_REF" ]]; then
-  envref+="-pr $SPLENV_REF"
+  envref="-pr $SPLENV_REF"
 fi
 buildrefs=""
 for r in ${REFS[*]}; do
