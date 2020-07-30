@@ -16,26 +16,31 @@ arch_list.each { arch ->
       stringParam('SPLENV_REF', null, 'Conda env ref. If not specified it will use the default from lsstsw.')
     }
 
-    script = ''' #!/bin/bash
+    script = '''#!/bin/bash
 set +x
 
+#------------------------------
 envref=""
-if [[ "${SPLENV_REF}" ]]; then
-  envref="-r ${SPLENV_REF}"
+if [[ "$SPLENV_REF" ]]; then
+  envref+="-r $SPLENV_REF"
 fi
-echo "Sourcing environment:"
-echo "   source $HOME/lsstsw/bin/envconfig $envref"
-source $HOME//lsstsw/bin/envconfig $envref
-
 buildrefs=""
 for r in ${REFS[*]}; do
   buildrefs+="-r $r"
 done
-if [[ "${PRODUCTS}" ]]; then
+products=""
+if [[ "$PRODUCTS" ]]; then
   products=$PRODUCTS
 else
   products="lsst_distrib"
 fi
+
+#--------------------------------
+echo "Sourcing environment:"
+echo "   source $HOME/lsstsw/bin/envconfig $envref"
+source $HOME/lsstsw/bin/envconfig $envref
+
+#--------------------------------
 echo "Executing rebuild:" 
 echo "       rebuild $buildrefs $products"
 rebuild $buildrefs $products'''
