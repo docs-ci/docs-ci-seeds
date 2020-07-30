@@ -4,12 +4,18 @@ def arch_list = ["centos7", "centos8"]
 def rebuild_jobs_folder = "Rebuilds"
 def matrix = [:]
 
+def buildParams = [
+  string(name: 'REFS', value: REFS),
+  string(name: 'PRODUCTS', value: PRODUCTS),
+  string(name: 'SPLENV_REF', value: SPLENV_REF),
+]
+
 arch_list.each { arch ->
   matrix[arch] = {
     stage('build' + arch) {
       build(
         job: "${rebuild_jobs_folder}/rebuild-${arch}",
-        parameters: [],
+        parameters: buildParams,
         wait: true,
       )
     }

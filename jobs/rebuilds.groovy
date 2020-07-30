@@ -20,9 +20,9 @@ arch_list.each { arch ->
 set +x
 
 #------------------------------
-envref=""
+envref="-p"
 if [[ "$SPLENV_REF" ]]; then
-  envref+="-r $SPLENV_REF"
+  envref+="-pr $SPLENV_REF"
 fi
 buildrefs=""
 for r in ${REFS[*]}; do
