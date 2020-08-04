@@ -24,10 +24,12 @@ arch_list.each { arch ->
         parameters: buildParams,
         wait: true,
       )
-      def manifest_file = "/var/jenkins_home/${arch}/lsstsw/build/manifest.txt"
-      def manifest  = readFile(manifest_file)
-      def buildid = manifest =~ /(?m)^BUILD=(b.*)/
-      println "Build on ${arch} completed. Build is is ${buildid}."
+      node(master) {
+        def manifest_file = "/var/jenkins_home/${arch}/lsstsw/build/manifest.txt"
+        def manifest  = readFile(manifest_file)
+        def buildid = manifest =~ /(?m)^BUILD=(b.*)/
+        println "Build on ${arch} completed. Build is is ${buildid}."
+      }
     }
   }
 }
