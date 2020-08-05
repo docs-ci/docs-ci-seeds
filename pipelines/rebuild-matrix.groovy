@@ -1,4 +1,4 @@
-node { label "master" }
+//node { label "master" }
 
 def arch_list = ["centos7", "centos8"]
 def rebuild_jobs_folder = "Rebuilds"
@@ -24,8 +24,6 @@ arch_list.each { arch ->
         parameters: buildParams,
         wait: true,
       )
-      node(master) {
-      }
     }
     stage('bID' + arch) {
         def manifest_file = "/var/jenkins_home/${arch}/lsstsw/build/manifest.txt"
@@ -38,5 +36,3 @@ arch_list.each { arch ->
 
 parallel matrix
 
-arch_list.each { arch ->
-}
