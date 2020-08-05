@@ -27,14 +27,16 @@ arch_list.each { arch ->
       node(master) {
       }
     }
+    stage('bID' + arch) {
+        def manifest_file = "/var/jenkins_home/${arch}/lsstsw/build/manifest.txt"
+        def manifest  = readFile(manifest_file)
+        def buildid = manifest =~ /(?m)^BUILD=(b.*)/
+        println "Build on ${arch} completed. Build is is ${buildid}."
+    }
   }
 }
 
 parallel matrix
 
 arch_list.each { arch ->
-        def manifest_file = "/var/jenkins_home/${arch}/lsstsw/build/manifest.txt"
-        def manifest  = readFile(manifest_file)
-        def buildid = manifest =~ /(?m)^BUILD=(b.*)/
-        println "Build on ${arch} completed. Build is is ${buildid}."
 }
