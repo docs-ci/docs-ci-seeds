@@ -29,7 +29,8 @@ arch_list.each { arch ->
       node("master") {
         def manifest_file = "/var/jenkins_home/${arch}/lsstsw/build/manifest.txt"
         def manifest  = readFile(manifest_file)
-        def buildid = manifest =~ /(?m)^BUILD=(b.*)m ? m[0][1] : null
+        def buildid = manifest =~ /(?m)^BUILD=(b.*)/
+        m ? m[0][1] : null
         println "Build on ${arch} completed. Build is is ${buildid}."
       }
     }
