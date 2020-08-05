@@ -17,15 +17,15 @@ println SPLENV_REF
 
 arch_list.each { arch ->
   matrix[arch] = {
-    stage('build' + arch) {
+    stage('build ' + arch) {
       println arch + "  -------------"
       build(
         job: "${rebuild_jobs_folder}/rebuild-${arch}",
         parameters: buildParams,
         wait: true,
       )
-    //}
-    //stage('bID' + arch) {
+    }
+    stage('get bID ' + arch) {
       node("master") {
         def manifest_file = "/var/jenkins_home/${arch}/lsstsw/build/manifest.txt"
         def manifest  = readFile(manifest_file)
