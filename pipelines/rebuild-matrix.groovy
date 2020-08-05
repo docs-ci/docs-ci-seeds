@@ -31,7 +31,7 @@ arch_list.each { arch ->
         def manifest  = readFile(manifest_file)
         def m = manifest =~ /(?m)^BUILD=(b.*)/
         m ? m[0][1] : null
-        println "Build on ${arch} completed. Build is is ${buildid}."
+        println "Build on ${arch} completed. Build is is ${m}."
       }
     }
   }
