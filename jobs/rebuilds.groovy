@@ -43,7 +43,9 @@ source $HOME/lsstsw/bin/envconfig $envref
 #--------------------------------
 echo "Executing rebuild:" 
 echo "       rebuild $buildrefs $products"
-rebuild $buildrefs $products'''
+rebuild $buildrefs $products
+grep BUILD $HOME/lsstsw/build/manifest.txt | awk -F '=' '{print $2}' > $HOME/lsstsw/build/build.id
+'''
 
     steps {
       shell(script)

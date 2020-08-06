@@ -27,11 +27,9 @@ arch_list.each { arch ->
     }
     stage('get bID ' + arch) {
       node("master") {
-        def manifest_file = "/var/jenkins_home/${arch}/lsstsw/build/manifest.txt"
-        def manifest  = readFile(manifest_file)
-        def m = manifest =~ /(?m)^BUILD=(b.*)/
-        m ? m[0][1] : null
-        println "Build on ${arch} completed. Build is is ${m}."
+        def buildid_file = "/var/jenkins_home/${arch}/lsstsw/build/build.id"
+        def buildid  = readFile(buildid_file)
+        println "Build on ${arch} completed. Build is is ${buildid}."
       }
     }
   }
