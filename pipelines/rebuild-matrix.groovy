@@ -1,7 +1,7 @@
 //node { label "master" }
 
 def arch_list = ["centos7", "centos8"]
-def rebuild_jobs_folder = "Rebuilds"
+def rebuild_jobs_folder = "BuildJobs"
 def matrix = [:]
 
 def buildParams = [

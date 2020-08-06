@@ -1,7 +1,7 @@
 
 def arch_list = ["centos7", "centos8"]
 
-def jobs_dir = "Rebuilds"
+def jobs_dir = "BuildJobs"
 
 folder(jobs_dir){ description('Rebuild Jobs.') }
 
@@ -16,7 +16,7 @@ arch_list.each { arch ->
       stringParam('SPLENV_REF', null, 'Conda env ref. If not specified it will use the default from lsstsw.')
     }
 
-    script = '''#!/bin/bash
+    build_script = '''#!/bin/bash
 set +x
 
 #------------------------------
@@ -47,8 +47,16 @@ rebuild $buildrefs $products
 grep BUILD $HOME/lsstsw/build/manifest.txt | awk -F '=' '{print $2}' > $HOME/lsstsw/build/build.id
 '''
 
+    get_buildid_script = '''#!/bin/bash
+grep BUILD $HOME/lsstsw/build/manifest.txt | awk -F '=' '{print $2}'
+'''
+
     steps {
-      shell(script)
+      shell(build_script)
+
+      //https://stackoverflow.com/questions/36547680/how-to-do-i-get-the-output-of-a-shell-command-executed-using-into-a-variable-fro
+      def build_id = sh(script: get_buildif_script, returnStdout: true)
+      println build_id
     }
   }
 }
