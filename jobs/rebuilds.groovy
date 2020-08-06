@@ -47,19 +47,8 @@ rebuild $buildrefs $products
 grep BUILD $HOME/lsstsw/build/manifest.txt | awk -F '=' '{print $2}' > $HOME/lsstsw/build/build.id
 '''
 
-    get_buildid_script = '''#!/bin/bash
-grep BUILD $HOME/lsstsw/build/manifest.txt | awk -F '=' '{print $2}'
-'''
-
     steps {
-      step {
         shell(build_script)
-      }
-      step {
-        //https://stackoverflow.com/questions/36547680/how-to-do-i-get-the-output-of-a-shell-command-executed-using-into-a-variable-fro
-        def build_id = sh(script: get_buildid_script, returnStdout: true)
-        println build_id
-      }
     }
   }
 }
