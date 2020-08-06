@@ -55,7 +55,7 @@ grep BUILD $HOME/lsstsw/build/manifest.txt | awk -F '=' '{print $2}'
       shell(build_script)
 
       //https://stackoverflow.com/questions/36547680/how-to-do-i-get-the-output-of-a-shell-command-executed-using-into-a-variable-fro
-      def build_id = sh(script: get_buildif_script, returnStdout: true)
+      def build_id = sh(script: get_buildid_script, returnStdout: true)
       println build_id
     }
   }
