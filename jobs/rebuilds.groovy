@@ -19,12 +19,16 @@ arch_list.each { arch ->
     build_script = '''#!/bin/bash
 set +x
 
-#------------------------------
-envref="-p"
+#--------  update current lsstsw branch
+$HOME/lsstsw/bin/update
+
+#--------  defining parameters
+envref=""
 if [[ "$SPLENV_REF" ]]; then
-  envref="-pr $SPLENV_REF"
+  envref="-r $SPLENV_REF"
 fi
 buildrefs=""
+
 for r in ${REFS[*]}; do
   buildrefs+="-r $r"
 done

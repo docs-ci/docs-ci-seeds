@@ -25,7 +25,7 @@ pipelineJob("Pipelines/rebuild_matrix") {
     stringParam('SPLENV_REF', null, 'Conda env ref. If not specified it will use the default from lsstsw.')
   }
 
-  concurrentBuild(true)
+  //concurrentBuild(true)
 
   definition {
     cpsScm {
