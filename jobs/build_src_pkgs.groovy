@@ -51,8 +51,12 @@ grep BUILD $HOME/lsstsw/build/manifest.txt | awk -F '=' '{print $2}' > $HOME/lss
 
   publishsrc_script = '''#!/bin/bash
 set +x
-# this could be made more complex, to handle eups_tags is provided
-src-publish $PRODUCTS
+# this could be made more complex (a little bit), to handle eups_tags is provided
+
+# src-publish will enable the required env, depending on the build
+# therefore, lsstsw/bin is not in $PATH (envconfig has not been colled yet)
+# the script needs to be called using the absolute path
+$HOME/lsstsw/bin/src-publish $PRODUCTS
 '''
 
   steps {
