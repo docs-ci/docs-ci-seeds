@@ -1,5 +1,5 @@
 
-def label = "centos8"
+def arch = "centos8"
 
 def jobs_dir = "BuildJobs"
 
