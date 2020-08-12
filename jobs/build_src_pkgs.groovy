@@ -1,27 +1,27 @@
 
-def arch_list = ["centos7", "centos8"]
+def label = "centos8"
 
 def jobs_dir = "BuildJobs"
 
 folder(jobs_dir){ description('Build Jobs.') }
 
+job("${jobs_dir}/build-src-pkgs") {
+  label(arch)
 
-arch_list.each { arch ->
-  job("${jobs_dir}/rebuild-${arch}") {
-    label(arch)
+  parameters {
+    stringParam('REFS', null, 'Whitespace delimited list of git references to pass to rebuild with -t option')
+    stringParam('PRODUCTS', null, 'Whitespace delimited list of EUPS products to build.')
+    stringParam('SPLENV_REF', null, 'Conda env ref. If not specified it will use the default from lsstsw.')
+  }
 
-    parameters {
-      stringParam('REFS', null, 'Whitespace delimited list of git references to pass to rebuild with -t option')
-      stringParam('PRODUCTS', null, 'Whitespace delimited list of EUPS products to build.')
-      stringParam('SPLENV_REF', null, 'Conda env ref. If not specified it will use the default from lsstsw.')
-    }
-
-    build_script = '''#!/bin/bash
+  update_script = '''#!/bin/bash
 set +x
-
 #--------  update current lsstsw branch
 $HOME/lsstsw/bin/update
+'''
 
+  build_script = '''#!/bin/bash
+set +x
 #--------  defining parameters
 envref=""
 if [[ "$SPLENV_REF" ]]; then
@@ -38,12 +38,10 @@ if [[ "$PRODUCTS" ]]; then
 else
   products="lsst_distrib"
 fi
-
 #--------------------------------
 echo "Sourcing environment:"
 echo "   source $HOME/lsstsw/bin/envconfig $envref"
 source $HOME/lsstsw/bin/envconfig $envref
-
 #--------------------------------
 echo "Executing rebuild:" 
 echo "       rebuild $buildrefs $products"
@@ -51,9 +49,15 @@ rebuild $buildrefs $products
 grep BUILD $HOME/lsstsw/build/manifest.txt | awk -F '=' '{print $2}' > $HOME/lsstsw/build/build.id
 '''
 
-    steps {
-        shell(build_script)
-    }
+  publishsrc_script = '''#!/bin/bash
+set +x
+# this could be made more complex, to handle eups_tags is provided
+src-publish $PRODUCTS
+'''
+
+  steps {
+    shell(update_script)
+    shell(build_script)
+    shell(publishsrc_script)
   }
 }
-

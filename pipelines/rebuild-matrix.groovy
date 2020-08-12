@@ -29,7 +29,7 @@ arch_list.each { arch ->
       node("master") {
         def buildid_file = "/var/jenkins_home/${arch}/lsstsw/build/build.id"
         def buildid  = readFile(buildid_file)
-        println "Build on ${arch} completed. Build is is ${buildid}."
+        println "Build on ${arch} completed. BuildID is ${buildid}."
       }
     }
   }
