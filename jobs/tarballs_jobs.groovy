@@ -21,7 +21,7 @@ set +x
 $HOME/lsstsw/bin/update
 '''
 
-    publishtarbal_script = '''#!/bin/bash
+    publishtarballs_script = '''#!/bin/bash
 set +x
 
 if [[ ! "$PRODUCTS" ]]; then
@@ -42,7 +42,7 @@ $HOME/lsstsw/bin/tarball-publish -t $DISTRIBTAG $PRODUCTS
 
     steps {
       shell(update_script)
-      shell(publishtarball_script)
+      shell(publishtarballs_script)
     }
   }
 }
