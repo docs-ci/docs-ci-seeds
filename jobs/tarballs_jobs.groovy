@@ -18,6 +18,7 @@ arch_list.each { arch ->
     update_script = '''#!/bin/bash
 set +x
 #--------  update current lsstsw branch
+echo "[j>] update (node's lsstsw)"
 $HOME/lsstsw/bin/update
 '''
 
@@ -25,11 +26,11 @@ $HOME/lsstsw/bin/update
 set +x
 
 if [[ ! "$PRODUCTS" ]]; then
-  echo "Parameter PRODUCTS is mandantory."
+  echo "[j>] Parameter PRODUCTS is mandantory."
   exit -1
 fi
 if [[ ! "$DISTRIBTAG" ]]; then
-  echo "Parameter DISTRIBTAG is mandantory."
+  echo "[j>] Parameter DISTRIBTAG is mandantory."
   exit -1
 fi
 

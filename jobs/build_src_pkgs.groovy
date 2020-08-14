@@ -12,11 +12,12 @@ job("${jobs_dir}/build-src-pkgs") {
     stringParam('REFS', null, 'Whitespace delimited list of git references to pass to rebuild with -t option')
     stringParam('PRODUCTS', null, 'Whitespace delimited list of EUPS products to build.')
     stringParam('SPLENV_REF', null, 'Conda env ref. If not specified it will use the default from lsstsw.')
+    stringParam('DISTRIBTAG', "", 'Optional EUPS distribution tag. If none is provided, the timestamp will be used.')
   }
 
   update_script = '''#!/bin/bash
 set +x
-#--------  update current lsstsw branch
+echo "[j>] update (Jenkins worker's lsstsw)"
 $HOME/lsstsw/bin/update
 '''
 
@@ -40,11 +41,11 @@ else
 fi
 #--------------------------------
 echo "Sourcing environment:"
-echo "   source $HOME/lsstsw/bin/envconfig $envref"
+echo "[j>] source $HOME/lsstsw/bin/envconfig $envref"
 source $HOME/lsstsw/bin/envconfig $envref
 #--------------------------------
 echo "Executing rebuild:" 
-echo "       rebuild $buildrefs $products"
+echo "[j>] rebuild $buildrefs $products"
 rebuild $buildrefs $products
 grep BUILD $HOME/lsstsw/build/manifest.txt | awk -F '=' '{print $2}' > $HOME/lsstsw/build/build.id
 '''
@@ -63,8 +64,8 @@ fi
 # src-publish will enable the required env, depending on the build
 # therefore, lsstsw/bin is not in $PATH (envconfig has not been colled yet)
 # the script needs to be called using the absolute path
-echo "[>] $HOME/lsstsw/bin/src-publish $products"
-$HOME/lsstsw/bin/src-publish $products
+echo "[j>] $HOME/lsstsw/bin/src-publish -t $DISTRIBTAG $products"
+$HOME/lsstsw/bin/src-publish $DISTRIBTAG $products
 '''
 
   steps {
