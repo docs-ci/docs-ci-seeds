@@ -5,7 +5,7 @@ def jobs_dir = "BuildJobs"
 
 folder(jobs_dir){ description('Build Jobs.') }
 
-job("${jobs_dir}/build-src-pkgs") {
+job("${jobs_dir}/src-distrib") {
   label(arch)
 
   parameters {
