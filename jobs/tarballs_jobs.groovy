@@ -38,7 +38,7 @@ fi
 # therefore, lsstsw/bin is not in $PATH (envconfig has not been colled yet)
 # the script needs to be called using the absolute path
 echo "[>] $HOME/lsstsw/bin/tarball-publish -t $DISTRIBTAG $PRODUCTS"
-$HOME/lsstsw/bin/tarball-publish -t $DISTRIBTAG $PRODUCTS
+$HOME/lsstsw/bin/tarballs-publish -t $DISTRIBTAG $PRODUCTS
 '''
 
     steps {
