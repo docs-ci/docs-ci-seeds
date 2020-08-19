@@ -1,0 +1,6 @@
+rebuilds:
+  folder: "Rebuilds"
+  arch_list:
+    - "centos7"
+    - "centos8"
+  products: "lsst_distrib"

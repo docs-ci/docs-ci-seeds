@@ -1,7 +1,7 @@
-# list of document to autogenerate
+#
 LDM-540:
   gitUrl: https://github.com/lsst/LDM-540
-  gitBranch: tickets/RFC-713
+  gitBranch: jira-sync
   folder: DM
 LDM-639:
   gitUrl: https://github.com/lsst/LDM-639
@@ -39,10 +39,10 @@ DMTR-221:
   gitUrl: https://github.com/lsst-dm/DMTR-221
   gitBranch: tickets/DM-24002
   folder: DM
-#DMTR-231:
-#  gitUrl: https://github.com/lsst-dm/DMTR-231
-#  gitBranch: tickets/DM-23720
-#  folder: DM
+DMTR-231:
+  gitUrl: https://github.com/lsst-dm/DMTR-231
+  gitBranch: tickets/DM-16196
+  folder: DM
 DMTR-241:
   gitUrl: https://github.com/lsst-dm/DMTR-241
   gitBranch: tickets/DM-25235
