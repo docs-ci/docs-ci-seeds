@@ -7,7 +7,7 @@ def jobs_dir = "BuildJobs"
 folder(jobs_dir){ description('Build Jobs.') }
 
 arch_list.each { arch ->
-  job("${jobs_dir}/tarballs_${arch}") {
+  job("${jobs_dir}/tbls_distrib_${arch}") {
     label(arch)
 
     parameters {
@@ -37,7 +37,7 @@ fi
 # tarball-publish will enable the required env, depending on the build
 # therefore, lsstsw/bin is not in $PATH (envconfig has not been colled yet)
 # the script needs to be called using the absolute path
-echo "[>] $HOME/lsstsw/bin/tarball-publish -t $DISTRIBTAG $PRODUCTS"
+echo "[>] $HOME/lsstsw/bin/tarballs-publish -t $DISTRIBTAG $PRODUCTS"
 $HOME/lsstsw/bin/tarballs-publish -t $DISTRIBTAG $PRODUCTS
 '''
 
