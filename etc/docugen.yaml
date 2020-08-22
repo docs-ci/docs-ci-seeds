@@ -5,7 +5,7 @@ LDM-540:
   folder: DM
 LDM-639:
   gitUrl: https://github.com/lsst/LDM-639
-  gitBranch: tickets/RFC-721
+  gitBranch: jira-sync
   folder: DM
 LDM-692:
   gitUrl: https://github.com/lsst/LDM-692
