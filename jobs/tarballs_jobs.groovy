@@ -37,8 +37,8 @@ fi
 # tarball-publish will enable the required env, depending on the build
 # therefore, lsstsw/bin is not in $PATH (envconfig has not been colled yet)
 # the script needs to be called using the absolute path
-echo "[>] $HOME/lsstsw/bin/tarballs-publish -t $DISTRIBTAG $PRODUCTS"
-$HOME/lsstsw/bin/tarballs-publish -t $DISTRIBTAG $PRODUCTS
+echo "[>] $HOME/lsstsw/bin/tarballs-publish -n -t $DISTRIBTAG $PRODUCTS"
+$HOME/lsstsw/bin/tarballs-publish -n -t $DISTRIBTAG $PRODUCTS
 '''
 
     steps {

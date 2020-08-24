@@ -64,8 +64,8 @@ fi
 # src-publish will enable the required env, depending on the build
 # therefore, lsstsw/bin is not in $PATH (envconfig has not been colled yet)
 # the script needs to be called using the absolute path
-echo "[j>] $HOME/lsstsw/bin/src-publish -t $DISTRIBTAG $products"
-$HOME/lsstsw/bin/src-publish $DISTRIBTAG $products
+echo "[j>] $HOME/lsstsw/bin/src-publish -n -t $DISTRIBTAG $products"
+$HOME/lsstsw/bin/src-publish -n -t $DISTRIBTAG $products
 '''
 
   steps {
