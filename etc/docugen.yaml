@@ -9,7 +9,7 @@ LDM-639:
   folder: DM
 LDM-692:
   gitUrl: https://github.com/lsst/LDM-692
-  gitBranch: tickets/RFC-721
+  gitBranch: jira-sync
   folder: DM
 LDM-732:
   gitUrl: https://github.com/lsst/LDM-732
