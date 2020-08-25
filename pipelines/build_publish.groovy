@@ -1,5 +1,6 @@
 
 def arch_list = ["centos7", "centos8"]
+def arch_src = "centos8"
 def jobs_folder = "BuildJobs"
 def matrix = [:]
 
@@ -23,9 +24,9 @@ stage('Build Src Packages') {
 stage('Get DistribTag') {
   // this is required only if no DISTRIBTAG is provided
   node("master") {
-    def distribtag_file = "/var/jenkins_home/${arch}/lsstsw/build/distrib.tag"
+    def distribtag_file = "/var/jenkins_home/${arch_src}/lsstsw/build/distrib.tag"
     def distribtag  = readFile(distribtag_file)
-    println "Source distribution tagged as ${distribtag} (input value: $DISTRIBTAG."
+    println "Source distribution tagged as ${distribtag} (input value: $DISTRIBTAG)."
   }
 }
 
