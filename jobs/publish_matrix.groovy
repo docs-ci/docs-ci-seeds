@@ -21,7 +21,7 @@ pipelineJob("Pipelines/publish_matrix") {
 
   parameters {
     stringParam('REFS', null, 'Whitespace delimited list of git references to pass to rebuild with -t option.')
-    stringParam('PRODUCTS', null, 'Whitespace delimited list of EUPS products to build.')
+    stringParam('PRODUCTS', "lsst_distrib", 'Whitespace delimited list of EUPS products to build.')
     stringParam('SPLENV_REF', null, 'Conda env ref. If not specified it will use the default from lsstsw.')
     stringParam('DISTRIBTAG', null, 'Distribution tag (eups). If not specified the buildID will be used.')
   }

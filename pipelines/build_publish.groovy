@@ -4,20 +4,19 @@ def arch_src = "centos8"
 def jobs_folder = "BuildJobs"
 def matrix = [:]
 
-def buildParams = [
+// build srcs
+//   -  this is a single job, to be executed in the newest linux architecture
+def buildSrcParams = [
   string(name: 'REFS', value: REFS),
   string(name: 'PRODUCTS', value: PRODUCTS),
   string(name: 'SPLENV_REF', value: SPLENV_REF),
   string(name: 'DISTRIBTAG', value: DISTRIBTAG),
 ]
 
-// build srcs
-//   -  this is a single job, to be executed in the newest linux architecture
-
 stage('Build Src Packages') {
   build(
     job: "${jobs_folder}/src-distrib",
-    parameters: buildParams,
+    parameters: buildSrcParams,
     wait: true,
   )
 }
@@ -34,6 +33,10 @@ stage('Get DistribTag') {
 
 // build tarballs
 //   -  this is a a job matrix to be executed in all supported architectures
+def buildTblsParams = [
+  string(name: 'PRODUCTS', value: PRODUCTS),
+  string(name: 'DISTRIBTAG', value: DISTRIBTAG),
+]
 
 arch_list.each { arch ->
   matrix[arch] = {
@@ -41,16 +44,9 @@ arch_list.each { arch ->
       println arch + "  -------------"
       build(
         job: "${jobs_folder}/tbls-distrib-${arch}",
-        parameters: buildParams,
+        parameters: buildTblsParams,
         wait: true,
       )
-    }
-    stage('get bID ' + arch) {
-      node("master") {
-        def buildid_file = "/var/jenkins_home/${arch}/lsstsw/build/build.id"
-        def buildid  = readFile(buildid_file)
-        println "Build on ${arch} completed. BuildID is ${buildid}."
-      }
     }
   }
 }
