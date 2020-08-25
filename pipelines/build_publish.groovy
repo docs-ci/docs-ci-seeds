@@ -24,8 +24,8 @@ stage('Get DistribTag') {
   // this is required only if no DISTRIBTAG is provided
   node("master") {
     def distribtag_file = "/var/jenkins_home/${arch_src}/lsstsw/build/distrib.tag"
-    def distribtag  = readFile(distribtag_file).trim()
-    println "Source distribution tagged as ${distribtag} (input value: $DISTRIBTAG)."
+    def String distribtag = readFile(distribtag_file).trim()
+    println "Source distribution tagged as ${distribtag} (job input value: $DISTRIBTAG)."
   }
 }
 
