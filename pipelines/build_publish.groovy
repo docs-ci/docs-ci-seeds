@@ -3,6 +3,7 @@ def arch_list = ["centos7", "centos8"]
 def arch_src = "centos8"
 def jobs_folder = "BuildJobs"
 def matrix = [:]
+def String distribtag = ""
 
 // build srcs
 //   -  this is a single job, to be executed in the newest linux architecture
@@ -24,7 +25,7 @@ stage('Get DistribTag') {
   // this is required only if no DISTRIBTAG is provided
   node("master") {
     def distribtag_file = "/var/jenkins_home/${arch_src}/lsstsw/build/distrib.tag"
-    def String distribtag = readFile(distribtag_file).trim()
+    distribtag = readFile(distribtag_file).trim()
     println "Source distribution tagged as ${distribtag} (job input value: $DISTRIBTAG)."
   }
 }
@@ -35,10 +36,10 @@ stage('Get DistribTag') {
 //   -  this is a a job matrix to be executed in all supported architectures
 def buildTblsParams = [
   string(name: 'PRODUCTS', value: PRODUCTS),
-  string(name: 'DISTRIBTAG', value: "$distribtag"),
+  string(name: 'DISTRIBTAG', value: distribtag),
 ]
 
-print("$distribtag")
+print(distribtag)
 println(buildTblsParams)
 
 arch_list.each { arch ->
