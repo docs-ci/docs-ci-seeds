@@ -24,7 +24,7 @@ stage('Get DistribTag') {
   // this is required only if no DISTRIBTAG is provided
   node("master") {
     def distribtag_file = "/var/jenkins_home/${arch_src}/lsstsw/build/distrib.tag"
-    def distribtag  = readFile(distribtag_file)
+    def distribtag  = readFile(distribtag_file).trim()
     println "Source distribution tagged as ${distribtag} (input value: $DISTRIBTAG)."
   }
 }
@@ -35,7 +35,7 @@ stage('Get DistribTag') {
 //   -  this is a a job matrix to be executed in all supported architectures
 def buildTblsParams = [
   string(name: 'PRODUCTS', value: PRODUCTS),
-  string(name: 'DISTRIBTAG', value: DISTRIBTAG),
+  string(name: 'DISTRIBTAG', value: distribtag),
 ]
 
 arch_list.each { arch ->
