@@ -38,6 +38,7 @@ def buildTblsParams = [
   string(name: 'DISTRIBTAG', value: distribtag),
 ]
 
+print(distribtag)
 println(buildTblsParams)
 
 arch_list.each { arch ->
