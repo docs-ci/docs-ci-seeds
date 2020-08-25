@@ -38,6 +38,8 @@ def buildTblsParams = [
   string(name: 'DISTRIBTAG', value: distribtag),
 ]
 
+println(buildTblsParams)
+
 arch_list.each { arch ->
   matrix[arch] = {
     stage('Tarballs for ' + arch) {
