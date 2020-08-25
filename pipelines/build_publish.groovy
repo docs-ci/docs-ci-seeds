@@ -35,10 +35,10 @@ stage('Get DistribTag') {
 //   -  this is a a job matrix to be executed in all supported architectures
 def buildTblsParams = [
   string(name: 'PRODUCTS', value: PRODUCTS),
-  string(name: 'DISTRIBTAG', value: distribtag),
+  string(name: 'DISTRIBTAG', value: "$distribtag"),
 ]
 
-print(distribtag)
+print("$distribtag")
 println(buildTblsParams)
 
 arch_list.each { arch ->
