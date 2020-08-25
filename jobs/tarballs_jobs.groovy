@@ -7,7 +7,7 @@ def jobs_dir = "BuildJobs"
 folder(jobs_dir){ description('Build Jobs.') }
 
 arch_list.each { arch ->
-  job("${jobs_dir}/tbls_distrib_${arch}") {
+  job("${jobs_dir}/tbls-distrib-${arch}") {
     label(arch)
 
     parameters {

@@ -66,6 +66,11 @@ fi
 # the script needs to be called using the absolute path
 echo "[j>] $HOME/lsstsw/bin/src-publish -n -t $DISTRIBTAG $products"
 $HOME/lsstsw/bin/src-publish -n -t "$DISTRIBTAG" "$products"
+if [[ "$DISTRBTAG" ]]; then
+  echo "$DISTRIBTAG" > $HOME/lsstsw/build/distrib.tag
+else
+  grep BUILD $HOME/lsstsw/build/manifest.txt | awk -F '=' '{print $2}' > $HOME/lsstsw/build/distrib.tag
+fi
 '''
 
   steps {
