@@ -40,6 +40,9 @@ docs_list.each { doc, values ->
     checkout_script = checkout_script + 'git branch --set-upstream-to=origin/' + gitBranch + ' ' + gitBranch + '\n'
     checkout_script = checkout_script + 'git pull'
     job("docs/${values.folder}/${doc}-docugen") {
+        wrappers {
+            preBuildCleanup()
+        }
         label('docugen')
         scm {
             git {

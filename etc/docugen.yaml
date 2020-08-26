@@ -31,10 +31,10 @@ DMTR-182:
   gitUrl: https://github.com/lsst-dm/DMTR-182
   gitBranch: tickets/DM-17123
   folder: DM
-DMTR-192:
-  gitUrl: https://github.com/lsst-dm/DMTR-192
-  gitBranch: tickets/DM-16126
-  folder: DM
+#DMTR-192:
+#  gitUrl: https://github.com/lsst-dm/DMTR-192
+#  gitBranch: tickets/DM-16126
+#  folder: DM
 DMTR-221:
   gitUrl: https://github.com/lsst-dm/DMTR-221
   gitBranch: tickets/DM-24002
