@@ -65,7 +65,7 @@ fi
 # therefore, lsstsw/bin is not in $PATH (envconfig has not been colled yet)
 # the script needs to be called using the absolute path
 echo "[j>] $HOME/lsstsw/bin/src-publish -n -t $DISTRIBTAG $products"
-$HOME/lsstsw/bin/src-publish -n -t "$DISTRIBTAG" "$products"
+$HOME/lsstsw/bin/src-publish -n -e 1 -v -t "$DISTRIBTAG" "$products"
 if [[ "$DISTRBTAG" ]]; then
   echo "$DISTRIBTAG" > $HOME/lsstsw/build/distrib.tag
 else
