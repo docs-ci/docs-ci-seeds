@@ -17,12 +17,14 @@ job("${jobs_dir}/src-distrib") {
 
   update_script = '''#!/bin/bash
 set +x
+set -e
 echo "[j>] update (Jenkins worker's lsstsw)"
 $HOME/lsstsw/bin/update
 '''
 
   build_script = '''#!/bin/bash
 set +x
+set -e
 #--------  defining parameters
 envref=""
 if [[ "$SPLENV_REF" ]]; then
@@ -52,6 +54,7 @@ grep BUILD $HOME/lsstsw/build/manifest.txt | awk -F '=' '{print $2}' > $HOME/lss
 
   publishsrc_script = '''#!/bin/bash
 set +x
+set -e
 # this could be made more complex (a little bit), to handle eups_tags is provided
 
 products=""

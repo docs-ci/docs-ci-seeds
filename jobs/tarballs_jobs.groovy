@@ -17,6 +17,7 @@ arch_list.each { arch ->
 
     update_script = '''#!/bin/bash
 set +x
+set -e
 #--------  update current lsstsw branch
 echo "[j>] update (node's lsstsw)"
 $HOME/lsstsw/bin/update
@@ -24,7 +25,7 @@ $HOME/lsstsw/bin/update
 
     publishtarballs_script = '''#!/bin/bash
 set +x
-
+set -e
 if [[ ! "$PRODUCTS" ]]; then
   echo "[j>] Parameter PRODUCTS is mandantory."
   exit -1
