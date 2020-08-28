@@ -50,7 +50,12 @@ docs_list.each { doc, values ->
                     url(gitUrl)
                     credentials(git_credentials)
                 }
-                extensions { cleanBeforeCheckout() }
+                extensions {
+                    wipeOutWorkspace()
+                    submoduleOptions {
+                        recursive()
+                    }
+                }
             }
         }
         triggers { cron('H 4 * * *') }
