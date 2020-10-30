@@ -37,3 +37,12 @@ arch_list.each { arch ->
 
 parallel matrix
 
+// vim jobs/publish_matrix.groovy
+stage('Build Src Packages') {
+  build(
+    job: "Pipelines/publish_matrix",
+    parameters: buildParams,
+    wait: false,
+  )
+}
+

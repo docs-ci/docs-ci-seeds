@@ -6,16 +6,6 @@ folder('Pipelines'){ description('All Pipelines Jobs.') }
 pipelineJob("Pipelines/publish_matrix") {
   description('Identify a suitable build (rebuild), publishu the sources and publish the tarballs.')
 
-  properties {
-    pipelineTriggers {
-      triggers {
-        cron {
-          spec('H 4 * * *')
-        }
-      }
-    }
-  }
-
   def repo = SEED_JOB.scm.userRemoteConfigs.get(0).getUrl()
   def ref  = SEED_JOB.scm.getBranches().get(0).getName()
 
