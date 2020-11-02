@@ -5,6 +5,11 @@ def jobs_folder = "BuildJobs"
 def matrix = [:]
 def String distribtag = ""
 
+// check if no product is passed as parameter, to use lsst_distrib
+if (PRODUCT?) {
+  PRODUCT = "lsst_distrib"
+}
+
 // build srcs
 //   -  this is a single job, to be executed in the newest linux architecture
 def buildSrcParams = [
