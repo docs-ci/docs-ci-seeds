@@ -6,7 +6,7 @@ def matrix = [:]
 def String distribtag = ""
 
 // check if no product is passed as parameter, to use lsst_distrib
-if (PRODUCT?) {
+if (PRODUCT.isEmpty()) {
   PRODUCT = "lsst_distrib"
 }
 
