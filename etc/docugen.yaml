@@ -49,7 +49,7 @@ DMTR-241:
   folder: DM
 DMTR-261:
   gitUrl: https://github.com/lsst-dm/DMTR-261
-  gitBranch: tickets/DM-25646
+  gitBranch: tickets/DM-26364
   folder: DM
 LSE-419:
   gitUrl: https://github.com/lsst/LSE-419
