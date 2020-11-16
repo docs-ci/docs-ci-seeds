@@ -39,18 +39,18 @@ DMTR-221:
   gitUrl: https://github.com/lsst-dm/DMTR-221
   gitBranch: tickets/DM-24002
   folder: DM
-DMTR-231:
-  gitUrl: https://github.com/lsst-dm/DMTR-231
-  gitBranch: tickets/DM-17125
-  folder: DM
+#DMTR-231:
+#  gitUrl: https://github.com/lsst-dm/DMTR-231
+#  gitBranch: tickets/DM-17125
+#  folder: DM
 DMTR-241:
   gitUrl: https://github.com/lsst-dm/DMTR-241
   gitBranch: tickets/DM-25235
   folder: DM
-DMTR-261:
-  gitUrl: https://github.com/lsst-dm/DMTR-261
-  gitBranch: tickets/DM-26364
-  folder: DM
+#DMTR-261:
+#  gitUrl: https://github.com/lsst-dm/DMTR-261
+#  gitBranch: tickets/DM-26364
+#  folder: DM
 LSE-419:
   gitUrl: https://github.com/lsst/LSE-419
   gitBranch: jira-sync
