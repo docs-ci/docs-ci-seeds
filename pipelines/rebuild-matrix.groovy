@@ -11,9 +11,6 @@ def buildParams = [
 ]
 
 println buildParams
-println REFS
-println PRODUCTS
-println SPLENV_REF
 
 arch_list.each { arch ->
   matrix[arch] = {
@@ -25,20 +22,20 @@ arch_list.each { arch ->
         wait: true,
       )
     }
-    stage('get bID ' + arch) {
-      node("master") {
-        def buildid_file = "/var/jenkins_home/${arch}/lsstsw/build/build.id"
-        def buildid  = readFile(buildid_file)
-        println "Build on ${arch} completed. BuildID is ${buildid}."
-      }
-    }
+    //stage('get bID ' + arch) {
+    //  node("master") {
+    //    def buildid_file = "/var/jenkins_home/${arch}/lsstsw/build/build.id"
+    //    def buildid  = readFile(buildid_file)
+    //    println "Build on ${arch} completed. BuildID is ${buildid}."
+    //  }
+    //}
   }
 }
 
 parallel matrix
 
 // vim jobs/publish_matrix.groovy
-stage('Build Src Packages') {
+stage('Publish Packages') {
   build(
     job: "Pipelines/publish_matrix",
     parameters: buildParams,
