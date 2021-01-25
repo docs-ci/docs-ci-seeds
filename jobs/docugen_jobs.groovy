@@ -6,7 +6,7 @@ def workDir = SEED_JOB.getWorkspace()
 def docs_list = new Yaml().load(("${workDir}/etc/docugen.yaml" as File).text)
 
 //def git_credentials = System.getenv("GIT_CRED")
-def github_access_token = System.getenv("SWRB_KEY")
+def github_access_token = System.getenv("GH_TOKEN")
 
 script = '''WORK_DIR=`pwd`
 source "${WORK_DIR}/.docugen"
