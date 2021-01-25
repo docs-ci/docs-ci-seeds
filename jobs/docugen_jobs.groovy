@@ -5,8 +5,8 @@ import org.yaml.snakeyaml.Yaml
 def workDir = SEED_JOB.getWorkspace()
 def docs_list = new Yaml().load(("${workDir}/etc/docugen.yaml" as File).text)
 
-//def git_credentials = System.getenv("GIT_CRED")
-def github_access_token = System.getenv("GH_TOKEN")
+def git_credentials = System.getenv("GIT_CRED")
+//def github_access_token = System.getenv("GH_TOKEN")
 
 script = '''WORK_DIR=`pwd`
 source "${WORK_DIR}/.docugen"
@@ -44,15 +44,15 @@ docs_list.each { doc, values ->
         wrappers {
             preBuildCleanup()
         }
-        configure { project ->
-           (project / 'authToken').setValue(github_access_token)
-        }
+        //configure { project ->
+        //   (project / 'authToken').setValue(github_access_token)
+        //}
         label('docugen')
         scm {
             git {
                 remote {
                     url(gitUrl)
-                    //credentials(git_credentials)
+                    credentials(git_credentials)
                 }
                 extensions { wipeOutWorkspace() }
             }
