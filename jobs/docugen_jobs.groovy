@@ -45,7 +45,7 @@ docs_list.each { doc, values ->
             preBuildCleanup()
         }
         configure { project ->
-           (project / 'authToken').setValue('github_access_token')
+           (project / 'authToken').setValue(github_access_token)
         }
         label('docugen')
         scm {
