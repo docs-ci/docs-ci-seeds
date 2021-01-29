@@ -87,3 +87,39 @@ SCTR-14:
   gitUrl: https://github.com/lsst-sitcom/SCTR-14
   gitBranch: tickets/SE-1324
   folder: SitCom
+EPO-VCD:
+  gitUrl: https://github.com/docs-ci/EPO-VCD
+  gitBranch: main
+  folder: NotPublishedYet
+OCS-VCD:
+  gitUrl: https://github.com/docs-ci/OCS-VCD
+  gitBranch: main
+  folder: NotPublishedYet
+CAM-VCD:
+  gitUrl: https://github.com/docs-ci/CAM-VCD
+  gitBranch: main
+  folder: NotPublishedYet
+PSE-VCD:
+  gitUrl: https://github.com/docs-ci/PSE-VCD
+  gitBranch: main
+  folder: NotPublishedYet
+EPO-VEBL:
+  gitUrl: https://github.com/docs-ci/EPO-VEBL
+  gitBranch: main
+  folder: NotPublishedYet
+OCS-VEBL:
+  gitUrl: https://github.com/docs-ci/OCS-VEBL
+  gitBranch: main
+  folder: NotPublishedYet
+PSE-VEBL:
+  gitUrl: https://github.com/docs-ci/PSE-VEBL
+  gitBranch: main
+  folder: NotPublishedYet
+CAM-VEBL:
+  gitUrl: https://github.com/docs-ci/CAM-VEBL
+  gitBranch: main
+  folder: NotPublishedYet
+TS-None-VEBL:
+  gitUrl: https://github.com/docs-ci/TS-None-VEBL
+  gitBranch: main
+  folder: NotPublishedYet
